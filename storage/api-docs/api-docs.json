@@ -1,0 +1,1629 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API сервиса iAmOkey",
+        "description": "Документация сервиса.",
+        "contact": {
+            "email": "nfs2025@mail.ru"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/accelerometer/{patient_id}": {
+            "get": {
+                "tags": [
+                    "Accelerometer"
+                ],
+                "summary": "Показатели пациента",
+                "description": "Возвращается объект всех показаний по пациенту",
+                "operationId": "8aa303b27b0644f8662526b36e840a30",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "ID пациента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/accelerometer/": {
+            "put": {
+                "tags": [
+                    "Accelerometer"
+                ],
+                "summary": "Создать нового запись данных показаний",
+                "description": "Создать нового запись данных показаний, возвращается объект показаний",
+                "operationId": "88b153389c61a8a744d052767958515c",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/AccelRequestBody"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/login/": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Авторизация",
+                "description": "Авторизация, возвращается объект пользователя",
+                "operationId": "15553fe7f5d4333c24767d8b33d03be2",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "description": "Телефон",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/confim/": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Подтверждение по коду",
+                "description": "Авторизация, возвращается объект пользователя",
+                "operationId": "34f185271f7b75d35c128031e76bd1ac",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "description": "Телефон",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Код",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/registration/": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Регистрация",
+                "description": "Регистрация, возвращается объект пользователя",
+                "operationId": "7d7b398167d6c7641ab895df84817b0a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/calibration/{patient_id}": {
+            "get": {
+                "tags": [
+                    "Calibration"
+                ],
+                "summary": "Калибровка пациента",
+                "description": "Возвращается объект показателей калибровки по пациенту",
+                "operationId": "29408b86d39d08abc4aa697bb65c946a",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "ID пациента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/calibration/": {
+            "put": {
+                "tags": [
+                    "Calibration"
+                ],
+                "summary": "Создать/обновить калибровка",
+                "description": "Создать/обновить калибровку, возвращается объект калибровки",
+                "operationId": "0467d637b882d5b80c8265c34f03670f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Calibration"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Calibration"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/comment/": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Создать новый комментарий",
+                "description": "Создатьновый комментарий, возвращается объект комментария",
+                "operationId": "30116951de0d13d6d18ca00c919259ad",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Comments"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comments"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/comment/{id}": {
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Удалить комментарий",
+                "description": "Удалить комментарий",
+                "operationId": "c62e0a86bead5c4f9817a8103b523015",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id комментария",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/device/": {
+            "get": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Дата регистрации устройств",
+                "description": "Возвращается объект всех устройств",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Зарегистрировать устройства",
+                "description": "Возвращается объект устройства",
+                "operationId": "e2b25eda56e5eb9bfa463c751d7c61bf",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "query",
+                        "description": "ID устройства",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/device/{device_id}": {
+            "get": {
+                "tags": [
+                    "Device"
+                ],
+                "summary": "Дата регистрации устройства",
+                "description": "Возвращается объект устройства",
+                "operationId": "4b91106c4aee75c92573f50593605765",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "ID устройства",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/events/{patient_id}": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Уведомления пациента",
+                "description": "Возвращается объект уведомлений пациента",
+                "operationId": "3068dc5ab1616926e3ba3669a9f498b0",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "patient_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/events/": {
+            "put": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Запись уведомления",
+                "description": "Создать нового пациента, возвращается объект пациента",
+                "operationId": "284454e652120d5dc433cfb2720d18f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Events"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Events"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/events/{id}": {
+            "delete": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Удалить уведомление",
+                "description": "Удалить уведомление",
+                "operationId": "2baad6a2e5111d5bec978166d5a89582",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id уведомления",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/indicator/{patient_id}": {
+            "get": {
+                "tags": [
+                    "Indicator"
+                ],
+                "summary": "Показатели пациента",
+                "description": "Возвращается объект всех показаний по пациенту",
+                "operationId": "0b837330570cca3e5afea65bb9b8a539",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "ID пациента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "date_from",
+                        "in": "query",
+                        "description": "Дата начала",
+                        "required": true
+                    },
+                    {
+                        "name": "date_to",
+                        "in": "query",
+                        "description": "Дата конца",
+                        "required": true
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "day|week|month|year",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/indicator/": {
+            "put": {
+                "tags": [
+                    "Indicator"
+                ],
+                "summary": "Создать нового запись данных показаний",
+                "description": "Создать нового запись данных показаний, возвращается объект показаний",
+                "operationId": "0964db250ca24083042397fefaebc30d",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/VehicleStoreRequestBody"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/medical/{patient_id}": {
+            "get": {
+                "tags": [
+                    "Medical"
+                ],
+                "summary": "Медикаменты пользователя",
+                "description": "Возвращается объект медикаментов",
+                "operationId": "02e1cb72f102b46dbb70819b2ae5745a",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "patient_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/medical/": {
+            "put": {
+                "tags": [
+                    "Medical"
+                ],
+                "summary": "Создать новый медикамент",
+                "description": "Создатьновый медикамент, возвращается объект медикамент",
+                "operationId": "faa473606f0fe8e6e02ae47c6d3262c6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Medical"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Medical"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/medical/{id}": {
+            "delete": {
+                "tags": [
+                    "Medical"
+                ],
+                "summary": "Удалить медикамент",
+                "description": "Удалить медикамент",
+                "operationId": "262fbc0a712442e7a9a3c72b873594b7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id медикамента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/medicallog/{patient_id}": {
+            "get": {
+                "tags": [
+                    "MedicalLog"
+                ],
+                "summary": "Прием таблеток пациента",
+                "description": "Возвращается объект приема таблеток пациента",
+                "operationId": "8714ea447f60b7388919eb4cf56ed663",
+                "parameters": [
+                    {
+                        "name": "patient_id",
+                        "in": "path",
+                        "description": "patient_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/medicallog/": {
+            "put": {
+                "tags": [
+                    "MedicalLog"
+                ],
+                "summary": "Запись приема таблеток",
+                "description": "Создать нового пациента, возвращается объект приема таблеток пациента",
+                "operationId": "02be5474c360468c111b87ca4f484212",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MedicalLog"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalLog"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/medicallog/{id}": {
+            "delete": {
+                "tags": [
+                    "MedicalLog"
+                ],
+                "summary": "Удалить запись приема таблеток",
+                "description": "Удалить запись приема таблеток",
+                "operationId": "226929edca6e30e53ce4057143bc0b98",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id уведомления",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/patient/{id}": {
+            "get": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Пациент",
+                "description": "Возвращается объект пациента",
+                "operationId": "6c5984c20f4c599317890ac2892c2862",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Удалить пациента",
+                "description": "Удалить пациента",
+                "operationId": "d815d9eab862308ce36b76a063b6a93f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id пациента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Обновить пациента",
+                "description": "Обновить пациента, возвращается объект пациента",
+                "operationId": "4a2b4762c3876a717440dab68e38811c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id пациента",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Patient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Patient"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/patients/": {
+            "get": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Пациенты",
+                "description": "Возвращается объект пациентов",
+                "parameters": [
+                    {
+                        "name": "name_sort",
+                        "in": "path",
+                        "description": "Сортировка по имени asc/desc",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "who_sort",
+                        "in": "path",
+                        "description": "Сортировка по кем приходится asc/desc",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_edit",
+                        "in": "path",
+                        "description": "Сортировка по последней дате изменения asc/desc",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Сортировка по имени пациента",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/patient/": {
+            "put": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Создать нового пациента",
+                "description": "Создать нового пациента, возвращается объект пациента",
+                "operationId": "496e444d68432a4c19d3ab0a4b5d525b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Patient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Patient"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/setting/": {
+            "get": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Цена подписки",
+                "description": "Возвращается цена подписки",
+                "operationId": "8f0a647a82e3e274e5d3d0c1ff322232",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Изменить цену подписки",
+                "description": "Изменить цену подписки",
+                "operationId": "dd58049829494a4826a9887ac8fbe566",
+                "parameters": [
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Цена",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Accelerometer": {
+                "title": "Accelerometer",
+                "description": "Accelerometer model",
+                "properties": {
+                    "patient_id": {
+                        "title": "patient_id",
+                        "description": "ID пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "x": {
+                        "title": "x",
+                        "description": "Координата x",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    },
+                    "y": {
+                        "title": "y",
+                        "description": "Координата y",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    },
+                    "z": {
+                        "title": "z",
+                        "description": "Координата z",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Accelerometer"
+                }
+            },
+            "Calibration": {
+                "title": "Calibration",
+                "description": "Calibration model",
+                "properties": {
+                    "patient_id": {
+                        "title": "patient_id",
+                        "description": "ID пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "systolic_1": {
+                        "title": "systolic_1",
+                        "description": "Систолическое давление 1",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 120
+                    },
+                    "systolic_2": {
+                        "title": "systolic_2",
+                        "description": "Систолическое давление 2",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 120
+                    },
+                    "systolic_3": {
+                        "title": "systolic_3",
+                        "description": "Систолическое давление 3",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 120
+                    },
+                    "diastolic_1": {
+                        "title": "diastolic_1",
+                        "description": "Диастолическое давление 1",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 80
+                    },
+                    "diastolic_2": {
+                        "title": "diastolic_2",
+                        "description": "Диастолическое давление 2",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 80
+                    },
+                    "diastolic_3": {
+                        "title": "diastolic_3",
+                        "description": "Диастолическое давление 3",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 80
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Calibration"
+                }
+            },
+            "Comments": {
+                "title": "Comments",
+                "description": "Comments model",
+                "properties": {
+                    "patient_id": {
+                        "title": "patient_id",
+                        "description": "ID пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "ID пользвателя",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "comment": {
+                        "title": "comment",
+                        "description": "Комментарий",
+                        "type": "integer",
+                        "example": "Комментарий"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Comments"
+                }
+            },
+            "Events": {
+                "title": "Events",
+                "description": "Events model",
+                "properties": {
+                    "patient_id": {
+                        "title": "Patient_id",
+                        "description": "Id пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "indicator_id": {
+                        "title": "Indicator_id",
+                        "description": "Id показаний",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "event_type": {
+                        "title": "Event_type",
+                        "description": "Тип события",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "description": "Пол",
+                        "type": "integer",
+                        "example": "Текстовое описание"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Events"
+                }
+            },
+            "Indicator": {
+                "title": "Indicator",
+                "description": "Indicator model",
+                "properties": {
+                    "patient_id": {
+                        "title": "patient_id",
+                        "description": "ID пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "systolic_pressure": {
+                        "title": "Systolic_pressure",
+                        "description": "Систолическое давление",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 120
+                    },
+                    "diastolic_pressure": {
+                        "title": "Diastolic_pressure",
+                        "description": "Диастолическое давление",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 80
+                    },
+                    "pulse": {
+                        "title": "Pulse",
+                        "description": "Пульс",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 60
+                    },
+                    "sleep": {
+                        "title": "Sleep",
+                        "description": "Сон",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 10
+                    },
+                    "steps": {
+                        "title": "Steps",
+                        "description": "Кол-во шагов",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 60
+                    },
+                    "saturation": {
+                        "title": "Saturation",
+                        "description": "Сатурация",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    },
+                    "accelerometer_x": {
+                        "title": "Accelerometer_x",
+                        "description": "Акселерометр x",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    },
+                    "accelerometer_y": {
+                        "title": "Accelerometer_y",
+                        "description": "Акселерометр y",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    },
+                    "accelerometer_z": {
+                        "title": "Accelerometer_z",
+                        "description": "Акселерометр z",
+                        "type": "number",
+                        "format": "float",
+                        "example": 96
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Indicator"
+                }
+            },
+            "Medical": {
+                "title": "Medical",
+                "description": "Medical model",
+                "properties": {
+                    "patient_id": {
+                        "title": "Patient_id",
+                        "description": "Id пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Название медикамента",
+                        "type": "integer",
+                        "example": "Глицин"
+                    },
+                    "time": {
+                        "title": "Time",
+                        "description": "Время приема",
+                        "type": "integer",
+                        "example": "Глицин"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "Иконка (1,2,3)",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Medical"
+                }
+            },
+            "MedicalLog": {
+                "title": "MedicalLog",
+                "description": "MedicalLog model",
+                "properties": {
+                    "medical_id": {
+                        "title": "Medical_id",
+                        "description": "Id пациента",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "status": {
+                        "title": "Status",
+                        "description": "0 - неуспешно, 1 - успешно",
+                        "type": "string",
+                        "example": 1
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "MedicalLog"
+                }
+            },
+            "Patient": {
+                "title": "Patient",
+                "description": "Patient model",
+                "properties": {
+                    "user_id": {
+                        "title": "User_id",
+                        "description": "ID пользователя",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "ФИО пациента",
+                        "type": "integer",
+                        "example": "Иванов Иван Иванович"
+                    },
+                    "birth": {
+                        "title": "Birth",
+                        "description": "Дата рождения",
+                        "type": "string",
+                        "example": "06.08.1960"
+                    },
+                    "gender_id": {
+                        "title": "Gender_id",
+                        "description": "Пол",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "growth": {
+                        "title": "Growth",
+                        "description": "Рост",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 184
+                    },
+                    "wieght": {
+                        "title": "Wieght",
+                        "description": "Вес",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 66
+                    },
+                    "stride_lenth": {
+                        "title": "Stride_lenth",
+                        "description": "Длина шага",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "subscription": {
+                        "title": "subscription",
+                        "description": "Дата подписки",
+                        "type": "integer",
+                        "example": null
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Patient"
+                }
+            },
+            "Setting": {
+                "title": "Patient",
+                "description": "Patient model",
+                "xml": {
+                    "name": "Patient"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "avatar": {
+                        "title": "Avatar",
+                        "description": "Аватар",
+                        "type": "integer",
+                        "example": "images/avatar.jpg"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "description": "Почта",
+                        "type": "integer",
+                        "example": "mail@mail.ru"
+                    },
+                    "phone": {
+                        "title": "Phone",
+                        "description": "Телефон",
+                        "type": "integer",
+                        "example": "+7 (999) 999 99 99"
+                    },
+                    "fullname": {
+                        "title": "Fullname",
+                        "description": "Полное имя",
+                        "type": "integer",
+                        "example": "Иванов Иван Иванович"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Пароль",
+                        "type": "integer",
+                        "example": "pAsSwOrD67802"
+                    },
+                    "role": {
+                        "title": "Role",
+                        "description": "Роль пользователя. 0 - обычный пользователь. 1 - администратор",
+                        "type": "integer",
+                        "example": 0
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        },
+        "responses": {
+            "400": {
+                "description": "Bad Request"
+            },
+            "401": {
+                "description": "Unauthenticated"
+            },
+            "403": {
+                "description": "Forbidden"
+            }
+        },
+        "examples": {
+            "Indicator": {
+                "summary": "Indicator",
+                "value": [
+                    {
+                        "patient_id": 1,
+                        "pressure": {
+                            "systolic": 120,
+                            "diastolic": 80
+                        },
+                        "pulse": {
+                            "average": 80,
+                            "min": 60,
+                            "max": 90,
+                            "dispersion": 96
+                        },
+                        "accelerometer": {
+                            "x": 80,
+                            "y": 60,
+                            "z": 90
+                        },
+                        "saturation": 96,
+                        "sleep": 5,
+                        "steps": 60,
+                        "time": "2021-12-29 09:23:40"
+                    },
+                    {
+                        "patient_id": 1,
+                        "pressure": {
+                            "systolic": 120,
+                            "diastolic": 80
+                        },
+                        "pulse": {
+                            "average": 80,
+                            "min": 60,
+                            "max": 90,
+                            "dispersion": 96
+                        },
+                        "accelerometer": {
+                            "x": 80,
+                            "y": 60,
+                            "z": 90
+                        },
+                        "saturation": 96,
+                        "sleep": 5,
+                        "steps": 60,
+                        "time": "2021-12-29 09:23:40"
+                    }
+                ]
+            },
+            "Accelerometer": {
+                "summary": "Accelerometer",
+                "value": [
+                    {
+                        "x": 80,
+                        "y": 60,
+                        "z": 90
+                    },
+                    {
+                        "x": 80,
+                        "y": 60,
+                        "z": 90
+                    },
+                    {
+                        "x": 80,
+                        "y": 60,
+                        "z": 90
+                    }
+                ]
+            }
+        },
+        "requestBodies": {
+            "VehicleStoreRequestBody": {
+                "description": "Indicator",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "examples": {
+                            "#/components/examples/Indicator": {
+                                "$ref": "#/components/examples/Indicator"
+                            }
+                        }
+                    }
+                }
+            },
+            "AccelRequestBody": {
+                "description": "Accelerometer",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "examples": {
+                            "#/components/examples/Accelerometer": {
+                                "$ref": "#/components/examples/Accelerometer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Patient",
+            "description": "Профиль пациента"
+        },
+        {
+            "name": "Medical",
+            "description": "Медикаменты"
+        },
+        {
+            "name": "User",
+            "description": "Пользователи"
+        },
+        {
+            "name": "Indicator",
+            "description": "Показатели"
+        },
+        {
+            "name": "Device",
+            "description": "Устройство (дата регистрации)"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
